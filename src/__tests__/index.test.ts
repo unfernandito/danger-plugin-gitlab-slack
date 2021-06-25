@@ -1,4 +1,4 @@
-import { GitHubPRDSL } from "danger"
+import { GitLabMR } from "danger"
 import { SlackOptions } from "../types"
 import { createMessage } from "../utils/createMessage"
 import { emptyResults, failsResults, summaryResults } from "./danger-mock"
@@ -15,30 +15,29 @@ global.fail = undefined
 global.markdown = undefined
 
 describe("createMessage()", () => {
-  let pr: Partial<GitHubPRDSL>
+  let pr: Partial<GitLabMR>
   let options: SlackOptions
   let expectedText: string
 
   beforeEach(() => {
     const dateString = new Date().toString()
     pr = {
-      html_url: "custom_url",
-      number: 10,
+      web_url: "custom_url",
+      id: 10,
       title: "super PR",
-      body: "Some text in body",
-      user: {
+      description: "Some text in body",
+      author: {
         id: 0,
-        login: "julon",
+        username: "unfernandito",
+        name: "Luis",
         avatar_url: "file://test.png",
-        type: "User",
-        href: "#",
+        web_url: "https://gitlab.com/",
+        state: "active",
       },
       state: "open",
       created_at: dateString,
-      locked: false,
       updated_at: dateString,
       closed_at: null,
-      merged_at: null,
     }
 
     options = {
@@ -50,7 +49,7 @@ describe("createMessage()", () => {
       channel: "#channel",
     }
 
-    expectedText = "<custom_url|*PR#10* - super PR> by <file://test.png|julon>\nSome text in body"
+    expectedText = "<custom_url|*PR#10* - super PR> by <file://test.png|unfernandito>\nSome text in body"
   })
 
   it("should output the correct options (text, username, iconEmoji, iconUrl, channel) when set", () => {

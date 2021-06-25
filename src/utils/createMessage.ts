@@ -1,12 +1,12 @@
 import { IncomingWebhookSendArguments } from "@slack/webhook"
-import { GitHubPRDSL, DangerResults } from "danger"
+import { DangerResults, GitLabMR } from "danger"
 import { SlackOptions } from "../types"
 import { createAttachment } from "./createAttachment"
 import { createMarkdownAttachment } from "./createMarkdownAttachment"
 import { getDynamicEmoji } from "./getDynamicEmoji"
 
 export function createMessage(
-  pr: Partial<GitHubPRDSL> | GitHubPRDSL,
+  pr: Partial<GitLabMR> | GitLabMR,
   resultLists: DangerResults,
   options: SlackOptions
 ): IncomingWebhookSendArguments {
@@ -38,11 +38,11 @@ export function createMessage(
     const messages = resultLists.messages
     const markdowns = resultLists.markdowns
 
-    const prInfo = pr ? `<${pr.html_url}|*PR#${pr.number}* - ${pr.title}>` : "not info founded"
-    const prAuthor = pr ? `<${pr.user?.avatar_url}|${pr.user?.login}>` : "not author found"
+    const prInfo = pr ? `<${pr.web_url}|*PR#${pr.id}* - ${pr.title}>` : "not info founded"
+    const prAuthor = pr ? `<${pr.author?.avatar_url}|${pr.author?.username}>` : "not author found"
 
     msg.icon_emoji = getDynamicEmoji(fails, warnings)
-    msg.text = `${prInfo} by ${prAuthor}\n${pr.body}`
+    msg.text = `${prInfo} by ${prAuthor}\n${pr.description}`
 
     // add violations as slack attachments
     if (!fails.length && !warnings.length && !messages.length) {

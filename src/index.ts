@@ -19,6 +19,6 @@ declare let results: DangerResults
 
 export default function slack(options: SlackOptions): void {
   const webhook = new IncomingWebhook(options.webhookUrl)
-  const msg = createMessage(danger.github.pr, results, options)
+  const msg = createMessage(danger.gitlab.mr, results, options)
   webhook.send(msg)
 }
