@@ -1,4 +1,4 @@
-import { DangerResults } from "../node_modules/danger/distribution/dsl/DangerResults"
+import { DangerResults } from "danger"
 
 export const emptyResults: DangerResults = {
   fails: [],
@@ -8,7 +8,12 @@ export const emptyResults: DangerResults = {
 }
 
 export const failsResultsWithoutMessages: DangerResults = {
-  fails: [{} as any, {} as any],
+  fails: [
+    {
+      message: "Error message 1",
+    },
+    { message: "Error message 2" },
+  ],
   warnings: [],
   messages: [],
   markdowns: [],
@@ -32,5 +37,5 @@ export const summaryResults: DangerResults = {
   fails: [{ message: "Failing message Failing message" }],
   warnings: [{ message: "Warning message Warning message" }],
   messages: [{ message: "message" }],
-  markdowns: ["markdown"],
+  markdowns: [{ message: "markdown" }],
 }
