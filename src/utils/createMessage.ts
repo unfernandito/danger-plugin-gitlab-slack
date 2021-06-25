@@ -38,7 +38,7 @@ export function createMessage(
     const messages = resultLists.messages
     const markdowns = resultLists.markdowns
 
-    const prInfo = pr ? `<${pr.web_url}|*PR#${pr.id}* - ${pr.title}>` : "not info founded"
+    const prInfo = pr ? `<${pr.web_url}|*PR#${pr.id}* - ${pr.title}>` : "not info found"
     const prAuthor = pr ? `<${pr.author?.avatar_url}|${pr.author?.username}>` : "not author found"
 
     msg.icon_emoji = getDynamicEmoji(fails, warnings)
