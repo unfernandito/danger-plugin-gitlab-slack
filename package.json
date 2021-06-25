@@ -90,18 +90,14 @@
   },
   "dependencies": {},
   "release": {
-    "verifyConditions": [
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/git",
-      "@semantic-release/github"
+    "branches": [
+      "master"
     ],
-    "getLastRelease": "@semantic-release/npm",
-    "publish": [
-      "@semantic-release/changelog",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
       "@semantic-release/npm",
-      "@semantic-release/git",
-      "@semantic-release/github"
+      "@semantic-release/git"
     ]
   }
 }
