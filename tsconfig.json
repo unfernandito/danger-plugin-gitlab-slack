@@ -7,7 +7,8 @@
     "allowJs": false,
     "pretty": true,
     "strictNullChecks": true,
-    "declaration": true
+    "declaration": true,
+    "strict": true
   },
   "lib": ["es2017"],
   "include": ["src/**/*.ts", "src/**/*.tsx", "dangerfile.ts"],
