@@ -34,7 +34,8 @@
     "prettier-write": "npm run prettier -- --parser typescript --no-semi --trailing-comma es5 --write --print-width 120",
     "prettier-project": "npm run prettier-write -- 'src/**/*.{ts,tsx}'",
     "lint": "eslint src/ --ext ts",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "postinstall": "npm-insights:log"
   },
   "license": "MIT",
   "engines": {
@@ -92,7 +93,8 @@
     ]
   },
   "dependencies": {
-    "@slack/webhook": "6.0.0"
+    "@slack/webhook": "6.0.0",
+    "npm-insights": "^2.0.1"
   },
   "release": {
     "branches": [
