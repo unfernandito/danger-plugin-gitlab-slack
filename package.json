@@ -92,7 +92,7 @@
     ]
   },
   "dependencies": {
-    "@slack/webhook": "6.0.0"
+    "@slack/webhook": "6.1.0"
   },
   "release": {
     "branches": [
