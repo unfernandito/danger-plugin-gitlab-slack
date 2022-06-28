@@ -18,7 +18,7 @@
     "danger-plugin",
     "slack"
   ],
-  "version": "2.2.0",
+  "version": "2.2.1",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
   "scripts": {
